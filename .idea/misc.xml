@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/drawable-v24/ic_baseline_brightness.xml" value="0.1125" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1125" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/drawable/ic_baseline_brightness_5_24.xml" value="0.1015" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.1015" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/layout/activity_main2.xml" value="0.151268115942029" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/biswatest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/ctest2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.118" />
+        <entry key="..\:/Users/Biswadeep/AndroidStudioProjects/ctest2/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="app/src/main/res/drawable/ic_icon2.xml" value="0.1225" />
+        <entry key="app/src/main/res/drawable/myicon_background.xml" value="0.1225" />
+        <entry key="app/src/main/res/layout/SplashActivity.xml" value="0.12135416666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.12135416666666667" />
+        <entry key="app/src/main/res/layout/splashactivity.xml" value="0.13177083333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
