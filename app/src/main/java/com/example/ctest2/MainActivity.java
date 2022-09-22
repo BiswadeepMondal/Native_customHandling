@@ -33,6 +33,7 @@ import com.clevertap.android.sdk.interfaces.NotificationHandler;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,18 +70,25 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
 
         //clevertapDefaultInstance.pushFcmRegistrationId(task.getResult(),true);
 
-
+        MiPushClient.registerPush(this, "2882303761520478796", "5382047861796");
+        String xiaomiToken = MiPushClient.getRegId(this);
+        if(clevertapDefaultInstance!= null){
+            clevertapDefaultInstance.pushXiaomiRegistrationId(xiaomiToken,true);
+            Log.d("1231","1231"+xiaomiToken);
+        }else{
+            Log.d("1231","CleverTap is NULL no token");
+        }
        // Log.d("myphone", "phone: "+myphone);
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-//                        sendFCMTokenToDatabase(task.getResult());
-                       // Toast.makeText(getApplicationContext(),"Notification Token is"+task.getResult(),Toast.LENGTH_SHORT).show();
-                        Log.d("ttest", "ttest: "+task.getResult());
-                       clevertapDefaultInstance.pushFcmRegistrationId(task.getResult(),true);
-                        Log.d(	"Push Unregistered", "Push Unregistered: ");
-                    }
-                });
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful() && task.getResult() != null) {
+////                        sendFCMTokenToDatabase(task.getResult());
+//                       // Toast.makeText(getApplicationContext(),"Notification Token is"+task.getResult(),Toast.LENGTH_SHORT).show();
+//                        Log.d("ttest", "ttest: "+task.getResult());
+//                       clevertapDefaultInstance.pushFcmRegistrationId(task.getResult(),true);
+//                        Log.d(	"Push Unregistered", "Push Unregistered: ");
+//                    }
+//                });
         TemplateRenderer.setDebugLevel(3);
         if (cleverTapDefaultInstance != null) {
             //Set the Notification Inbox Listener
@@ -90,12 +98,14 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
            // cleverTapDefaultInstance.getInboxMessageCount();
            // cleverTapDefaultInstance.getAllInboxMessages();
         }
-
-
-
+//
+//        Bundle bundle = this.getIntent().getExtras();
+//        if(bundle != null) {
+//            Log.d("afterclick", "inside mainactivity" + bundle.get("key").toString());
+//        }
         CleverTapAPI.getDefaultInstance(this).setDisplayUnitListener(this);
-        CleverTapAPI.createNotificationChannel(getApplicationContext(),"biswa2","biswa2","biswa2", NotificationManager.IMPORTANCE_MAX,true,"sound1.mp3");
-        CleverTapAPI.createNotificationChannel(getApplicationContext(),"biswa1","biswa1","biswa1", NotificationManager.IMPORTANCE_MAX,true,"sound2.mp3");
+
+
 
         createu = findViewById(R.id.createuser);
         pushpbt = findViewById(R.id.pushnotification);
@@ -158,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
 //        });
        pushpbt.setOnClickListener(v -> {
            clevertapDefaultInstance.pushEvent("biswapushbut");
-
+           clevertapDefaultInstance.removeValueForKey("MYgender");
        });
 
         evtbtn.setOnClickListener(v->{
@@ -207,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
             profileUpdate.put("Phone", myphone);   // Phone (with the country code, starting with +)
             profileUpdate.put("Identity", myid);
             profileUpdate.put("Gender", "M");             // Can be either M or F
+
             profileUpdate.put("DOB", new Date());            // Date of Birth. Set the Date object to the appropriate value first
             // optional fields. controls whether the user will be sent email, push etc.
 
@@ -298,6 +309,7 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
         for (CleverTapDisplayUnitContent i:unit.getContents()) {
             titlem.setText(i.getTitle());
             msg.setText(i.getMessage());
+
             //Notification Viewed Event
             CleverTapAPI.getDefaultInstance(this).pushDisplayUnitViewedEventForID(unit.getUnitID());
 
@@ -323,4 +335,6 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
     public void inboxMessagesDidUpdate() {
 
     }
+
+
 }
