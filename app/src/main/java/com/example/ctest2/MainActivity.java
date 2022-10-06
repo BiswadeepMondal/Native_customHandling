@@ -1,6 +1,8 @@
 package com.example.ctest2;
 import android.app.AlarmManager;
 import android.app.Notification;
+
+import com.clevertap.android.sdk.CTWebInterface;
 import com.jakewharton.processphoenix.ProcessPhoenix;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RemoteViews;
@@ -67,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
         CleverTapAPI cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(this);
         CleverTapAPI.setDebugLevel(3);
         TemplateRenderer.setDebugLevel(3);
+
+        //webview
+        WebView mywebview = (WebView) findViewById(R.id.web);
+        mywebview.addJavascriptInterface(new CTWebInterface(CleverTapAPI.getDefaultInstance(this)),"CleverTap");
+        mywebview.getSettings().setJavaScriptEnabled(true);
+
 
         //clevertapDefaultInstance.pushFcmRegistrationId(task.getResult(),true);
 
@@ -187,13 +196,15 @@ public class MainActivity extends AppCompatActivity implements CTInboxListener,D
         inboxcount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              int ct= cleverTapDefaultInstance.getInboxMessageCount(); // to count total inbox msg
-//              Log.d("Count","Count"+cleverTapDefaultInstance.getInboxMessageCount());
-               //  text1.setText(ct);
-                String ctr= String.valueOf(ct);
-                txtinbox.setText("Your inbox message count is "+ctr);
+//              int ct= cleverTapDefaultInstance.getInboxMessageCount(); // to count total inbox msg
+////              Log.d("Count","Count"+cleverTapDefaultInstance.getInboxMessageCount());
+//               //  text1.setText(ct);
+//                String ctr= String.valueOf(ct);
+//                txtinbox.setText("Your inbox message count is "+ctr);
 
                 //Log.d("Count","data: "+cleverTapDefaultInstance.getAllInboxMessages());
+
+        mywebview.loadUrl("https://biswaemailunsub.000webhostapp.com/");
             }
         });
 
