@@ -85,17 +85,17 @@ public void onNewToken(String token1)
             }
             else
             {
-                Log.d("TAG", "from ct");
+                //Log.d("TAG", "from ct");
                 // if payload from clevertap
              //  CleverTapAPI.getDefaultInstance(this).pushNotificationViewedEvent(extras);
                 Log.d("CT data", "CT raw: " + message);
                Log.d("CT data", "CT json: " + new Gson().toJson(message));   // to print payload
 
                 Log.d("EXTRAS", "EXTRAS: "+extras);
+                 CleverTapAPI.createNotification(getApplicationContext(),extras);
+          //boolean status=new CTFcmMessageHandler().createNotification(getApplicationContext(), message);
 
-          boolean status=new CTFcmMessageHandler().createNotification(getApplicationContext(), message);
-
-          CleverTapAPI.getDefaultInstance(this).pushNotificationViewedEvent(extras);
+         // CleverTapAPI.getDefaultInstance(this).pushNotificationViewedEvent(extras);
                // CleverTapAPI.getDefaultInstance(this).pushNotificationClickedEvent(extras);
 //          NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 //               //  custom rendering
